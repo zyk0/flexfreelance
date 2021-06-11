@@ -1,0 +1,12 @@
+currency
+
+https://gist.githubusercontent.com/jsutaria/6934af34cae3d579abeeff5c6d6f3592/raw/9393c1c3daba714e8ea9ca168ebae562c18909d1/currency-list.json
+
+
+https://gist.githubusercontent.com/tmbnh1/467ae024c265d71c909142be2298c321/raw/3b4129aabc409f52118429a84570b2d9364c7ef8/currencies.json
+
+
+https://gist.githubusercontent.com/ugurayan/689e7536efee582e88fdba081c26bce1/raw/b587cbe76e583bb4dfe2b9309f32fe5c738ce41d/Currency.json
+
+
+https://gist.githubusercontent.com/ChangJoo-Park/7af5d313ed9602fbf66a/raw/c9de2f31dd955ad52816d519daf81ffc90372d6e/currencyData.json

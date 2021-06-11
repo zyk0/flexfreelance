@@ -1,0 +1,19 @@
+{
+    "description": "simple_site PHP_MySQL",
+	"minimum-stability": "stable",
+	"require": {
+		"fzaninotto/faker": "^1.9",
+        "monolog/monolog": "^2.2",
+        "nesbot/carbon": "^2.46"
+    },
+	"require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+	"author": [
+        {
+            "name": "maksim",
+            "homepage": "https://github.com/zyk0",
+            "role": "php-vue-developer"
+        }
+	]
+}

@@ -24,6 +24,14 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <?php	require_once "db.php"; ?>
+
+<style>
+img.barcode {
+    border: 1px solid #ccc;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+</style>
 </head>
 
 <body>
@@ -44,8 +52,8 @@
           </ul>
         </div>
         <?php require_once "nav.php" ?>
+		<?php require_once "nav.php" ?>
       </div>
-
     </div>
   </div>
 
@@ -54,7 +62,6 @@
       <a class="navbar-brand" href="index.php">FlexFreelance</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
-        <span></span>
       </a>
 
     </div>
@@ -93,10 +100,42 @@
 					<br><br>
 					<p>onesingle["text"].  публикация:</p>
                     <ul class="list-unstyled list-line">
-                        
                         <li> <?php echo $onesingle["text"]?> </li>
                     </ul>
-                    
+					
+					<!-- barcode -->
+				<div class="">
+					<div class="">	
+							<form method="post">
+								<input type="hidden" name="barcodeText" id="" value="<?php $barnum1 = rand(1234, 99999); $barnum2 = rand(111111, 999999);echo $barnum1.''.$barnum2;?>">
+								<input type="hidden" name="barcodeType" id="" value="code128">
+								<input type="hidden" name="barcodeDisplay" id="" value="horizontal">
+									
+								<input type="hidden" name="barcodeSize" id="barcodeSize" value="20">
+								<input type="hidden" name="printText" id="printText" value="true">	
+								<input type="submit" name="generateBarcode" class="btn btn-outline-dark" value="Получить штрихкод заказа">
+							</form>
+
+						<div class="">
+						 <?php	 
+							if(isset($_POST['generateBarcode'])) {
+								$barcodeText = trim($_POST['barcodeText']);
+								$barcodeType=$_POST['barcodeType'];
+								$barcodeDisplay=$_POST['barcodeDisplay'];
+								$barcodeSize=$_POST['barcodeSize'];
+								$printText=$_POST['printText'];
+								
+								$printAuthor=$onesingle["author"];
+									
+								echo '<img class="barcode" alt="'.$barcodeText.'" src="barcode/barcode.php?text='.$barcodeText.'&codetype='.$barcodeType.'&orientation='.$barcodeDisplay.'&size='.$barcodeSize.'&print='.$printText.'"/>';
+							}
+						?>
+						</div>
+					</div>		
+				</div>
+				<!-- barcode -->
+					
+					
                 </div>
             </div>
             <?php endforeach; ?>

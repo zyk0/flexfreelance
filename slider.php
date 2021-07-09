@@ -6,7 +6,7 @@
 	  <div class="testimonial-wrap">
 		<div class="testimonial">
 		  <img src="assets/img/person_1.jpg" alt="Image" class="img-fluid">
-		  <p>&mdash; сетевое администрирование</p>
+		  <p>&mdash; администрирование</p>
 		</div>
 	  </div>
 

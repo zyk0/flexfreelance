@@ -19,19 +19,12 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <?php	require_once "db.php"; ?>
 
-<style>
-img.barcode {
-    border: 1px solid #ccc;
-    padding: 20px 10px;
-    border-radius: 5px;
-}
-</style>
 </head>
 
 <body>
@@ -52,7 +45,6 @@ img.barcode {
           </ul>
         </div>
         <?php require_once "nav.php" ?>
-		<?php require_once "nav.php" ?>
       </div>
     </div>
   </div>
@@ -68,18 +60,27 @@ img.barcode {
   </nav>
 
   <main id="main">
-
     <section class="section">
       <div class="container">
-        <div class="row mb-4 align-items-center">
-          <div class="col-md-6" >
-
-            <h2>Каталог заказов</h2>
-            <p>Каталог заказов</p>
-
-          </div>
-
-        </div>
+		  <div class="row mb-5 align-items-center">
+			  <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+				<h2>Каталог заказов </h2>
+				<p class="mb-0">freelance биржа </p>
+			  </div>
+			  <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
+				<div class="filters">
+				  <span href="#">Проектирование сайта</span>
+				  <br>
+				  <span href="#">Администрирование сервера</span>
+				  <br>
+				  <span href="#">Поддержка баз данных</span>
+				  <br>
+				  <span href="#">Иллюстрации и анимация</span>
+				  <br>
+				  <span href="#">Графический дизайн</span>
+				</div>
+			  </div>
+		  </div>
       </div>
 
       <div class="site-section pb-0">
@@ -89,53 +90,43 @@ img.barcode {
             
             <?php $onesingles = get_singles_all(); ?>
             <?php foreach($onesingles as $onesingle): ?>
+			
+			<!-- категории -->
+			<?php $category_name = get_category_by_id($onesingle["category_id"]); ?>
+			<!-- автор заказа -->
+			<?php $author_name = get_author_by_id($onesingle["users_id"]); ?>
+			
+			<!-- аватарка автора -->
+			<?php $avatar_author = get_avatar_author_by_id($onesingle["users_id"]); ?>
+			
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5" >
 			<span><i class="icofont-check"></i></span> 
                 <div class=''>  
-                    <!--<span class="la  la-3x mb-4">< ? = "<img src=". $onesingle['img']." "."alt='img' width='60' height='40'>"  ? ></span>    -->  
+                    <!--<span class="la la-3x mb-4">< ? = "<img src=". $onesingle['img']." "."alt='img' width='60' height='40'>"  ? ></span>    -->  
                     <h4 class="h4 mb-2"><p>onesingle["title"]: <?php echo $onesingle["title"]?> </p></h4>
                     <p>onesingle["id"]: <?php echo $onesingle["id"]."#" ?></p>
-                    <p>onesingle["author"] опубликован:<b> <?php echo $onesingle["author"] ?></b></p>
-                    <small>$onesingle["date"]: <?php echo $onesingle["date"]?></small>
-					<br><br>
+                    
+                    <!-- <small>$onesingle["date"]: < ?php echo $onesingle["date"]? ></small>--> 
+					<!-- 2021-07-12 -->
+					<br>
+					<small>$onesingle["date"]: <?php echo date("d.M.Y", strtotime($onesingle["date"]));?></small>
+					<!-- 12.Jul.2021 -->
+					<p>$category_name:  <a href="#"><?php echo $category_name ?></a> </p>
+					
+					<p>onesingle["author"] опубликован:<b> <?php echo $onesingle["author"] ?></b></p>
+					<p>$author_name:  <a href="#"><?php echo $author_name ?></a> </p>
+					
+					<span class="la la-3x mb-4">
+					<?php echo "<img src=". $avatar_author ." "."width='60' height='80'>"  ?>
+					</span>  
+					
 					<p>onesingle["text"].  публикация:</p>
                     <ul class="list-unstyled list-line">
                         <li> <?php echo $onesingle["text"]?> </li>
                     </ul>
-					
 					<!-- barcode -->
-				<div class="">
-					<div class="">	
-							<form method="post">
-								<input type="hidden" name="barcodeText" id="" value="<?php $barnum1 = rand(1234, 99999); $barnum2 = rand(111111, 999999);echo $barnum1.''.$barnum2;?>">
-								<input type="hidden" name="barcodeType" id="" value="code128">
-								<input type="hidden" name="barcodeDisplay" id="" value="horizontal">
-									
-								<input type="hidden" name="barcodeSize" id="barcodeSize" value="20">
-								<input type="hidden" name="printText" id="printText" value="true">	
-								<input type="submit" name="generateBarcode" class="btn btn-outline-dark" value="Получить штрихкод заказа">
-							</form>
-
-						<div class="">
-						 <?php	 
-							if(isset($_POST['generateBarcode'])) {
-								$barcodeText = trim($_POST['barcodeText']);
-								$barcodeType=$_POST['barcodeType'];
-								$barcodeDisplay=$_POST['barcodeDisplay'];
-								$barcodeSize=$_POST['barcodeSize'];
-								$printText=$_POST['printText'];
-								
-								$printAuthor=$onesingle["author"];
-									
-								echo '<img class="barcode" alt="'.$barcodeText.'" src="barcode/barcode.php?text='.$barcodeText.'&codetype='.$barcodeType.'&orientation='.$barcodeDisplay.'&size='.$barcodeSize.'&print='.$printText.'"/>';
-							}
-						?>
-						</div>
-					</div>		
-				</div>
-				<!-- barcode -->
-					
-					
+					<?php require "bar.php"; ?>
+					<!-- barcode -->
                 </div>
             </div>
             <?php endforeach; ?>
@@ -173,7 +164,8 @@ img.barcode {
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-
+  <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+  
   <script src="assets/js/main.js"></script>
 
 </body>

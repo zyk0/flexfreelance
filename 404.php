@@ -11,8 +11,8 @@
 			<div class="fof">
 					<h1>Error 404</h1>
 					<br>
-					<p>страница нне существует</p>
-					<span>переход на<a href="index.php"> главную страницу </a>сайта</span>
+					<p>страница не существует</p>
+					<span>переход на<a href="/flexfreelance/index.php"> главную страницу </a>сайта</span>
 			</div>
 			
 			

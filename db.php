@@ -4,12 +4,19 @@ $dbhost = "127.0.0.1";
 $dbname = "flexfreelance";
 $username = "root";
 $password = "";
-	
-//$db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
+
+// PDO : назначить использовать UTF-8 по умолчанию в MySQL:
+//$db = new PDO("mysql:host=$dbhost; dbname=$dbname;  charset=utf8;", $username, $password);
+
+// еще вариант, как назначить UTF-8 в MySQL:
+//new PDO("mysql:host=$dbhost; dbname=$dbname;", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+// charset=utf8;  - установка кодировки utf8
+
 // результат $db - ассоц.массив
 
 try{
-	$db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
+	$db = new PDO("mysql:host=$dbhost; dbname=$dbname; charset=utf8;", $username, $password);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	//исключения	
 }catch (PDOException $e){
@@ -26,19 +33,33 @@ function get_singles_all(){
 	//вовращает ассоц. 2хуровневый массив
 }
 
-function get_singles_test(){
-	global $db; // делаем видимой переменную
-	$singles_test = $db->query("SELECT * FROM singles", PDO::FETCH_ASSOC); //выбрать все из табл 'singles'
-	// return $singles_test; 
-
-	var_dump($singles_test);
-	var_dump($singles_test->fetchAll());
-	//foreach($singles_test as $singly_test ){
-	//  return $singly_test; //
-	//}
+// а здесь извлекаем из `categories` названия категории по id
+function get_category_by_id($id){
+	global $db;
+	$categories = $db->query("SELECT * FROM categories WHERE id = $id"); 
+	foreach($categories as $category){
+		return $category["category_name"];
+	}
 }
 
-	
+// извлекаем из `users` имя автора по id
+function get_author_by_id($id){
+	global $db;
+	$authors = $db->query("SELECT * FROM users WHERE id = $id"); 
+	foreach($authors as $author){
+		return $author["full_name"];
+	}
+}
+
+// извлекаем из `users` фоточку автора по id
+function get_avatar_author_by_id($id){
+	global $db;
+	$avatar_authors = $db->query("SELECT * FROM users WHERE id = $id"); 
+	foreach($avatar_authors as $avatar_author){
+		return $avatar_author["avatar"];
+	}
+}
+
   // Ф-ция подключения к БД db
   /*
   define('MYSQL_SERVER', 'localhost'); 

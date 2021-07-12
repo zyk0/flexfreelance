@@ -20,7 +20,6 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
@@ -123,6 +122,7 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/minor.js"></script>
 
 </body>
 

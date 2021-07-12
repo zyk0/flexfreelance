@@ -20,7 +20,6 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -73,7 +72,7 @@
           </div>
           <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
             <div class="filters">
-              <span href="#">Доработка и настройка сайта</span>
+              <span href="#">Проектирование сайта</span>
 			  <br>
               <span href="#">Администрирование сервера</span>
 			  <br>
@@ -153,6 +152,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/minor.js"></script>
 
 </body>
 

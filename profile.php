@@ -26,7 +26,6 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -99,7 +98,6 @@
 				</form>
               </li>
 			  -->
-			  
 
 			<!-- Профиль -->
 			<div>
@@ -114,14 +112,19 @@
 
 		  <div class="col-md-6 mb-5 mb-md-0">
 		  <p>Добро пожаловать, <?= $_SESSION['user']['full_name'] ?>!</p>
-            <p>Это личный кабинет, здесь вы можете размещать информацию о работах.</p>
+            <p>Это личный кабинет, 
+			<br>
+			здесь вы можете размещать информацию о своих заказах.</p>
+			<p><br><br></p>
+
+			
             <p><br><br></p>
 		  	<form action="singles/sing.php" method="post">
-				<label>названиие</label>
+				<label>название</label>
 				<input type="text" name="title" placeholder="напечатайте названиие" minlength="2" maxlength="25" required>
 				
 				<label>описание</label>
-				<input type="text" name="text" placeholder="напечатайте краткое описание" minlength="12" maxlength="125" required>
+				<input type="text" name="text" placeholder="напечатайте краткое описание заказа" minlength="12" maxlength="125" required>
 				
 				<button type="submit">Опубликовать</button>
 			</form>

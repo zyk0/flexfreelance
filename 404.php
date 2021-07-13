@@ -14,8 +14,6 @@
 					<p>страница не существует</p>
 					<span>переход на<a href="/flexfreelance/index.php"> главную страницу </a>сайта</span>
 			</div>
-			
-			
 	</div>
 </body>
 </html>

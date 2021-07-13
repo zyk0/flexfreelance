@@ -18,7 +18,6 @@
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -115,10 +114,7 @@
             <p>Это личный кабинет, 
 			<br>
 			здесь вы можете размещать информацию о своих заказах.</p>
-			<p><br><br></p>
-
-			
-            <p><br><br></p>
+			<br>
 		  	<form action="singles/sing.php" method="post">
 				<label>название</label>
 				<input type="text" name="title" placeholder="напечатайте названиие" minlength="2" maxlength="25" required>

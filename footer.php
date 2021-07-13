@@ -6,7 +6,7 @@
 			<span class="">
 				<!-- стандартная дата: < ? php echo date("j F Y"); ? >-->
 				<?php
-					require 'vendor/autoload.php';
+					require_once 'vendor/autoload.php';
 					use Carbon\Carbon;
 
 					echo Carbon::now()->locale('ru_RU')->isoFormat('ll');	//15 апр 2021 г.	

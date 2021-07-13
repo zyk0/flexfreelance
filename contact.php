@@ -25,7 +25,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
     <?php
-    require __DIR__.'/vendor/autoload.php';
+    require_once __DIR__.'/vendor/autoload.php';
     use Faker\Factory as Faker;
     $faker = Faker::create('ru_RU');
     //$faker = Faker\Factory::create();
@@ -48,7 +48,7 @@
             <li><a href="services.php">Заказы</a></li>
             <li><a href="works.php">Работы</a></li>
             <li class="active"><a href="contact.php">Контакты</a></li>
-            <li><a href="order.php">Заказ</a></li>
+            <li><a href="order.php">Заявка</a></li>
           </ul>
         </div>
         <?php require_once "nav.php" ?>

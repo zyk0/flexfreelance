@@ -1,3 +1,10 @@
+<?php 
+	require_once "db.php";
+?>
+<?php 
+	$sing = get_sing_by_id($_GET['id']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Работа</title>
+  <title>Заказ <?php echo $sing["title"];?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -19,12 +26,9 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -39,21 +43,20 @@
             <li><a href="index.php">Начальная</a></li>
             <li><a href="about.php">Регистрация</a></li>
             <li><a href="services.php">Заказы</a></li>
-            <li class="active"><a href="works.php">Работы</a></li>
+			<li class="active"><a href="services-single.php">Заказ <?php echo $sing["title"];?></a></li>
+            <li><a href="works.php">Работы</a></li>
             <li><a href="contact.php">Контакты</a></li>
 			<li><a href="order.php">Заявка</a></li>
           </ul>
         </div>
 		<?php require_once "nav.php" ?>
       </div>
-
     </div>
   </div>
 
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.php">FlexFreelance</a>
-
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
       </a>
@@ -62,15 +65,25 @@
   </nav>
  
   <main id="main">
-
     <section class="section">
 	
       <div class="container">
         <div class="row mb-4 align-items-center">
-          <div class="col-md-6" data-aos="fade-up">
-            <h2>Debian</h2>
-            <p>Debian is a stable and secure Linux based operating system.</p>
-			<p>Debian has extensive hardware support.</p>
+		
+          <div class="col-md-6">
+		  <p><a class="" href="services.php">Обратно к каталогу "Заказы"</a></p>
+            <h2>Заказ <?php echo $sing["title"];?> </h2>
+            <div class="shadow p-3 mb-5 bg-white rounded">
+				<small>дата:  </small> <?php echo date("d.m.Y", strtotime($sing["date"]));?>
+				<br>
+				<small>заказ: </small> <?php echo $sing["text"];?>
+				<br>
+				<small>автор: </small> <?php echo $sing["author"];?>
+				<br>
+				<?php echo $sing["author"] ?></b></p>
+				<!-- barcode -->
+				<?php require "bar.php"; ?>
+			</div>
           </div>
         </div>
       </div>
@@ -78,38 +91,32 @@
      <div class="site-section pb-0">
         <div class="container">
           <div class="row align-items-stretch">
-            <div class="col-md-8" data-aos="fade-up">
-              <img src="assets/img/debian.png" alt="debian" class="img-fluid">
+            <div class="col-md-8">
+              <img src="assets/img/debian.png" alt="debian" height="50px" width="550px" class="">
             </div>
-            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+			
+            <div class="col-md-3 ml-auto">
               <div class="sticky-content">
-                <h3 class="h3">Debian</h3>
-                <p class="mb-4"><span class="text-muted">Используют OS Debian:</span></p>
-
-                <div class="mb-5">
-				<p>
-				<?php require_once "json/jsonplace.php"; ?>
-				</p>
-                </div>
-                </ul>
+				
+				<div class="filters">
+				  <span href="#">Проектирование сайта</span>
+				  <br>
+				  <span href="#">Администрирование сервера</span>
+				  <br>
+				  <span href="#">Поддержка баз данных</span>
+				  <br>
+				  <span href="#">Иллюстрации и анимация</span>
+				  <br>
+				  <span href="#">Графический дизайн</span>
+				</div>							
+				
               </div>
             </div>
           </div>
         </div>
 	</div>
 	
-	 <div class="container">
-        <div class="row mb-12 align-items-center">
-          <div class="col-md-12" >
-            <h2>Заказчики из следующих локаций:</h2>
-			<?php require_once "json/json.php"; ?>
-          </div>
-        </div>
-      </div>
-	
     </section>
-
-    <?php  require_once "slider.php";  ?>
 
   </main>
   <?php require_once "footer.php"; ?>
@@ -118,11 +125,8 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/minor.js"></script>
 
 </body>
 

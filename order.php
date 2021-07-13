@@ -56,7 +56,7 @@
             <li><a href="services.php">Заказы</a></li>
             <li><a href="works.php">Работы</a></li>
             <li><a href="contact.php">Контакты</a></li>
-            <li class="active"><a href="order.php">Заказ</a></li>
+            <li class="active"><a href="order.php">Заявка</a></li>
           </ul>
         </div>
         <?php require_once "nav.php" ?>
@@ -76,26 +76,16 @@
 
   <main id="main">
     <section class="section pb-5">
-    
       <div class="container">
-      
         <div class="row mb-5 align-items-end">
-
           <div class="col-md-6">
-
             <h2>Быстрая заявка</h2>
-            
              <div><?php require_once "navbar.php"; ?></div>
-            
           </div>
-
         </div>
-
         <div class="row">
           <div class="col-md-6 ml-auto order-2">
 
-                
-                
               <!--<p><input type="submit" value="Отправить информацию"></p>-->
               <!--
                 вместо get_format_message() можно бы и  использовать 
@@ -123,7 +113,6 @@
           </div>
 
           <div class="col-md-6 mb-5 mb-md-0">
-		  <h3 class="h3 mb-4">Заявка на заказ</h3>
 
             <form action="order.php" method="post">
               
@@ -159,11 +148,9 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>

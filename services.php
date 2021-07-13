@@ -41,7 +41,7 @@
             <li class="active"><a href="services.php">Заказы</a></li>
             <li><a href="works.php">Работы</a></li>
             <li><a href="contact.php">Контакты</a></li>
-            <li><a href="order.php">Заказ</a></li>
+            <li><a href="order.php">Заявка</a></li>
           </ul>
         </div>
         <?php require_once "nav.php" ?>
@@ -102,8 +102,13 @@
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5" >
 			<span><i class="icofont-check"></i></span> 
                 <div class=''>  
-                    <!--<span class="la la-3x mb-4">< ? = "<img src=". $onesingle['img']." "."alt='img' width='60' height='40'>"  ? ></span>    -->  
-                    <h4 class="h4 mb-2"><p>onesingle["title"]: <?php echo $onesingle["title"]?> </p></h4>
+                    
+					<!-- динамическая ссылка на отдельный заказ -->
+                    <a target="_blank" href="/flexfreelance/services-single.php?id=<?php echo $onesingle["id"]; ?> ">
+						<h4 class="h4 mb-2">
+							<p> onesingle["title"]: <?php echo $onesingle["title"]?> </p>
+						</h4>
+					</a>	
                     <p>onesingle["id"]: <?php echo $onesingle["id"]."#" ?></p>
                     
                     <!-- <small>$onesingle["date"]: < ?php echo $onesingle["date"]? ></small>--> 
@@ -111,7 +116,7 @@
 					<br>
 					<small>$onesingle["date"]: <?php echo date("d.M.Y", strtotime($onesingle["date"]));?></small>
 					<!-- 12.Jul.2021 -->
-					<p>$category_name:  <a href="#"><?php echo $category_name ?></a> </p>
+					<p>$category_name: <a href="#!"><?php echo $category_name ?></a> </p>
 					
 					<p>onesingle["author"] опубликован:<b> <?php echo $onesingle["author"] ?></b></p>
 					<p>$author_name:  <a href="#"><?php echo $author_name ?></a> </p>
@@ -124,9 +129,7 @@
                     <ul class="list-unstyled list-line">
                         <li> <?php echo $onesingle["text"]?> </li>
                     </ul>
-					<!-- barcode -->
-					<?php require "bar.php"; ?>
-					<!-- barcode -->
+
                 </div>
             </div>
             <?php endforeach; ?>

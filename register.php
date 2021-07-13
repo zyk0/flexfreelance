@@ -47,7 +47,7 @@
             <li><a href="services.php">Заказы</a></li>
             <li><a href="works.php">Работы</a></li>
             <li><a href="contact.php">Контакты</a></li>
-			<li><a href="order.php">Заказ</a></li>
+			<li><a href="order.php">Заявка</a></li>
           </ul>
         </div>
         <div class="col-md-6 d-none d-md-block  mr-auto">

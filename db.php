@@ -60,6 +60,16 @@ function get_avatar_author_by_id($id){
 	}
 }
 
+// одиночная статья заказа
+// flexfreelance/services.php?id=12
+function get_sing_by_id($id){
+	global $db;
+	$sings = $db->query("SELECT * FROM `singles` WHERE id = $id");
+	foreach($sings as $sing){
+		return $sing;
+	}
+}
+
   // Ф-ция подключения к БД db
   /*
   define('MYSQL_SERVER', 'localhost'); 

@@ -19,8 +19,7 @@
 				$barcodeDisplay=$_POST['barcodeDisplay'];
 				$barcodeSize=$_POST['barcodeSize'];
 				$printText=$_POST['printText'];
-				
-				$printAuthor=$onesingle["author"];
+				//$printAuthor=$sing["author"];
 					
 				echo '<img class="imgbarcode" alt="'.$barcodeText.'" src="barcode/barcode.php?text='.$barcodeText.'&codetype='.$barcodeType.'&orientation='.$barcodeDisplay.'&size='.$barcodeSize.'&print='.$printText.'"/>';
 			}

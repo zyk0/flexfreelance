@@ -49,7 +49,7 @@ if (isset($_SESSION['user'])) {
             <li><a href="services.php">Заказы</a></li>
             <li><a href="works.php">Работы</a></li>
             <li><a href="contact.php">Контакты</a></li>
-            <li><a href="order.php">Заказ</a></li>
+            <li><a href="order.php">Заявка</a></li>
           </ul>
         </div>
         <?php require_once "nav.php" ?>
@@ -154,7 +154,7 @@ if (isset($_SESSION['user'])) {
 
   </main><!-- End #main -->
   <?php
-    require "footer.php";
+    require_once "footer.php";
     ?>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

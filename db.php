@@ -70,29 +70,4 @@ function get_sing_by_id($id){
 	}
 }
 
-  // Ф-ция подключения к БД db
-  /*
-  define('MYSQL_SERVER', 'localhost'); 
-  define('MYSQL_USER', 'root');
-  define('MYSQL_PASSWORD', '');
-  define('MYSQL_DB', 'flexfreelance');
-  
-  mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB) or die("Ошибка подключения ".mysqli_error($mysqli));
-  require_once('db.php');
-  */
-  
-	//mysqli_connect("127.0.0.1", "my_user", "my_password", "my_db");
-	//Устанавливает соединение с сервером MySQL
-	//require_once('db.php');
-	//подключает файл db.php к скрипту.
-	
-	/*
-	$link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB);
- 
-	//другой вариант обработки ошибок при подключени к mysql:
-	if($link->connect_error){
-		echo 'Error: '. $link->connect_error;
-	}
-	*/
-
 ?>

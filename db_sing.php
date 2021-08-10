@@ -15,23 +15,14 @@ try{
 
 // одиночная статья заказа
 // flexfreelance/services.php?id=1
-/*
-function get_sing_by_id($id){
+function get_onesing(){
 	global $db;
-		// выборка записей из таблицы `singles` по параметру id
-	$sings = $db->query("SELECT * FROM `singles` WHERE id = $id");
-		//распарсить массив через цикл 
-	foreach($sings as $sing){
-		// ретурн одиночную запись
-		return $sing;
-	}
-}
-*/
-function get_sing_by_id(){
-	global $db;
-	$sings = $db->query("SELECT * FROM `singles` WHERE id = 12");
-	foreach($sings as $sing){
-		return $sing;
+	     //   выборка записей из таблицы `singles` по параметру id
+	$onesings = $db->query("SELECT * FROM `singles` WHERE id = 12");
+		//    распарсить массив через цикл 
+	foreach($onesings as $onesing){
+			// одиночная запись
+		return $onesing; 
 	}
 }
 

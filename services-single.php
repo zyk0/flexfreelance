@@ -64,61 +64,54 @@
     </div>
   </nav>
  
-  <main id="main">
-    <section class="section">
-	
-      <div class="container">
-        <div class="row mb-4 align-items-center">
-		
-          <div class="col-md-6">
-		  <p><a class="" href="services.php">Обратно к каталогу "Заказы"</a></p>
-            <h2>Заказ <?php echo $sing["title"];?> </h2>
-            <div class="shadow p-3 mb-5 bg-white rounded">
+	<main id="main">
+	<section class="section">
+
+		<div class="container">
+		<div class="row mb-4 align-items-center">
+
+		<div class="col-md-6">
+			<p><a class="" href="services.php">Обратно к каталогу "Заказы"</a></p>
+			<h2>Заказ <?php echo $sing["title"];?> </h2>
+			<div class="shadow p-3 mb-5 bg-white rounded">
 				<small>дата:  </small> <?php echo date("d.m.Y", strtotime($sing["date"]));?>
 				<br>
 				<small>заказ: </small> <?php echo $sing["text"];?>
 				<br>
 				<small>автор: </small> <?php echo $sing["author"];?>
 				<br>
-				<?php echo $sing["author"] ?></b></p>
 				<!-- barcode -->
 				<?php require "bar.php"; ?>
 			</div>
-          </div>
-        </div>
-      </div>
+		</div>
 
-     <div class="site-section pb-0">
-        <div class="container">
-          <div class="row align-items-stretch">
-            <div class="col-md-8">
-              <img src="assets/img/debian.png" alt="debian" height="50px" width="550px" class="">
-            </div>
-			
-            <div class="col-md-3 ml-auto">
-              <div class="sticky-content">
-				
+		<div class="col-md-3 ml-auto">
+			<div class="sticky-content">
 				<div class="filters">
-				  <span href="#">Проектирование сайта</span>
-				  <br>
-				  <span href="#">Администрирование сервера</span>
-				  <br>
-				  <span href="#">Поддержка баз данных</span>
-				  <br>
-				  <span href="#">Иллюстрации и анимация</span>
-				  <br>
-				  <span href="#">Графический дизайн</span>
-				</div>							
-				
-              </div>
-            </div>
-          </div>
-        </div>
-	</div>
+				<span href="#">Проектирование сайта</span>
+				<br>
+				<span href="#">Администрирование сервера</span>
+				<br>
+				<span href="#">Поддержка баз данных</span>
+				<br>
+				<span href="#">Иллюстрации и анимация</span>
+				<br>
+				<span href="#">Графический дизайн</span>
+				</div>
+				<?php require_once "db_sing.php";?>
+				<?php 
+				$sing12 = get_onesing(); 
+				echo $sing12["title"];
+				?>
+			</div>
+		</div>  
+		</div>
+		</div>
 	
-    </section>
-
-  </main>
+	</section>
+	</main>
+  
+  
   <?php require_once "footer.php"; ?>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

@@ -11,4 +11,6 @@
     mysqli_query($connect, "INSERT INTO `singles` (`id`, `title`, `text`, `author`, `category_id`, `date`) VALUES (NULL, '$title', '$text', '$author', '$category_id', NOW())");
 	
 	header('Location: ../profile.php');
+	
+	//echo $author;
 ?>

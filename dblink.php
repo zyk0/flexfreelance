@@ -6,12 +6,8 @@ define('MYSQL_SERVER', '127.0.0.1');
 define('MYSQL_USER', 'root');
 define('MYSQL_PASSWORD', '');
 define('MYSQL_DB', 'flexfreelance');
-	
-//$db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
-// результат $db - ассоц.массив
 
 $link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB) or die("Ошибка подключения ".mysqli_error($mysqli));
-
 
 function get_users(){
 	global $link; // делаем видимой переменную

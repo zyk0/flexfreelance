@@ -1,3 +1,19 @@
+<?php
+// простое кеширование для статической страницы
+  $cache_dir = realpath(__DIR__).'/cache'; // директория для cache
+  $cache_name = md5(basename(__FILE__)).'.html'; // имя для cache-файла
+  $lifetime = 3600; //время жизни cache - один час
+  if (!is_dir($cache_dir)) { //если нет директории для cache
+    mkdir($cache_dir); //создание директории для cache
+  }
+  if (file_exists($cache_dir.'/'.$cache_name)) { //если кэш-файл есть
+    if (filemtime($cache_dir.'/'.$cache_name) + $lifetime > time()) { //Если время cache еще не вышло, то
+      exit(file_get_contents($cache_dir.'/'.$cache_name)); //печатаем содержимое cache-файла
+    }
+  }
+ 
+  ob_start(); // кэш-файла нет. буфер для cache'ирования
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +40,10 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <?php	require_once "db.php"; ?>
+  
+  <?php	require_once "db_category.php"; ?>
+  
+  <?php error_reporting(E_ALL); ?>
 
 </head>
 
@@ -54,6 +74,7 @@
       <a class="navbar-brand" href="index.php">FlexFreelance</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
+	  <span></span>
       </a>
 
     </div>
@@ -63,11 +84,34 @@
     <section class="section">
       <div class="container">
 		  <div class="row mb-5 align-items-center">
-			  <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+			  <div class="col-md-12 col-lg-6 mb-4 mb-lg-0">
 				<h2>Каталог заказов </h2>
 				<p class="mb-0">freelance биржа </p>
+				
+				<div class="input-group mb-3">
+				  <form name="search" method="post" action="search.php">
+					<input type="search" name="query" placeholder="Поиск">
+					<input type="submit" value="Найти">
+				  </form>
+				</div>
+				
 			  </div>
-			  <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
+			  <div class="col-md-12 col-lg-6 text-left text-lg-right" >
+			  <div class="filters">
+				<?php
+				$cats = get_categories();
+
+				//echo 'cats: '.gettype($cats); // >>array
+				?>
+
+				<?php foreach($cats as $array):?>
+					<?php foreach ($array as $key => $value) {	
+							  echo  "<span>" . $value . "</span>";
+						   }			
+					 ?>
+				<?php endforeach;?>
+
+				<!--
 				<div class="filters">
 				  <span href="#">Проектирование сайта</span>
 				  <br>
@@ -78,6 +122,8 @@
 				  <span href="#">Иллюстрации и анимация</span>
 				  <br>
 				  <span href="#">Графический дизайн</span>
+				</div>
+				-->
 				</div>
 			  </div>
 		  </div>
@@ -100,8 +146,8 @@
 			<?php $avatar_author = get_avatar_author_by_id($onesingle["users_id"]); ?>
 			
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5" >
-			<span><i class="icofont-check"></i></span> 
-                <div class=''>  
+			<!--<span><i class="icofont-check"></i></span> -->
+               <div class="shadow p-3 mb-5 bg-white rounded">
                     
 					<!-- динамическая ссылка на отдельный заказ -->
                     <a target="_blank" href="/flexfreelance/services-single.php?id=<?php echo $onesingle["id"]; ?> ">
@@ -122,9 +168,22 @@
 					<p>$author_name:  <a href="#"><?php echo $author_name ?></a> </p>
 					
 					<span class="la la-3x mb-4">
-					<?php echo "<img src=". $avatar_author ." "."width='60' height='80'>"  ?>
+						<?php echo "<img src=". $avatar_author ." "."width='60' height='80'>" ?>
 					</span>  
 					
+					<?php 
+					//php $avatar_default = get_avatar_author_by_id($onesingle[0]);
+					
+					//$count_letters_img = 18 > iconv_strlen($avatar_author); 
+					/*
+					if(iconv_strlen($avatar_author) < 18 ){ 
+						echo "<img src=". $avatar_default ." "."width='60' height='80'>";
+					}else{
+						echo "<img src=". $avatar_author ." "."width='60' height='80'>";
+					}
+					*/
+					?>
+
 					<p>onesingle["text"].  публикация:</p>
                     <ul class="list-unstyled list-line">
                         <li> <?php echo $onesingle["text"]?> </li>
@@ -173,3 +232,7 @@
 
 </body>
 </html>
+<?php
+  file_put_contents($cache_dir.'/'.$cache_name, ob_get_contents()); //запись cache-файл
+  ob_end_flush(); // закрыть буфер
+?>

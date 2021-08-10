@@ -100,6 +100,7 @@
 
 			<!-- Профиль -->
 			<div>
+			
 				<img src="<?= $_SESSION['user']['avatar'] ?>" class="avatar" alt="avatar">
 				<h3 class="profile"><?= $_SESSION['user']['full_name'] ?></h3>
 				<p><?= $_SESSION['user']['email'] ?><p>

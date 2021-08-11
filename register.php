@@ -92,22 +92,6 @@
           <div class="col-md-6 ml-auto order-2">
             <h3 class="h3 mb-4">Форма регистрации</h3>
             <ul class="list-unstyled">
-			<!--
-              <li class="mb-3">
-				<form method="POST">
-				  <div class="form-group">
-					<label for="exampleInputEmail1">Логин</label>
-					<input type="text" name="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напечатайте логин">
-				  </div>
-				  <div class="form-group">
-					<label for="exampleInputPassword1">Пароль</label>
-					<input type="text" name="password" class="form-control" id="exampleInputPassword1" placeholder="напечатайте пароль">
-				  </div>
-				  <input type="submit" name="registr" value="Зарегистрироваться" class="btn btn-primary"></input>
-				</form>
-              </li>
-			  -->
-			  
 			<!-- Форма регистрации -->
 
 			<form action="auth/signup.php" method="post" enctype="multipart/form-data">

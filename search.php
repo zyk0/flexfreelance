@@ -163,10 +163,6 @@ if(isset($_POST['query']))
 //connectDB();
 ?>
 			
-			
-			
-			
-			
       </div>
     </section>
   </main>

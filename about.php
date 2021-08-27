@@ -34,7 +34,6 @@ if (isset($_SESSION['user'])) {
   
   <link rel="stylesheet" href="assets/css/auth.css">
 </head>
-
 <body>
 
   <!-- ======= Navbar ======= -->
@@ -68,18 +67,15 @@ if (isset($_SESSION['user'])) {
         </div>
         -->
       </div>
-
     </div>
   </div>
 
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.php">FlexFreelance</a>
-
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
       </a>
-
     </div>
   </nav>
 
@@ -94,7 +90,6 @@ if (isset($_SESSION['user'])) {
                 <?php require_once "authnav.php"; ?>
             </p>
           </div>
-
         </div>
 
         <div class="row">
@@ -119,7 +114,6 @@ if (isset($_SESSION['user'])) {
 
 
 <!-- Форма авторизации -->
-
             <form action="auth/signin.php" method="post">
                 <label>Логин</label>
                 <input type="text" name="login" placeholder="Введите свой логин" autocomplete="off" minlength="2" maxlength="15" required>
@@ -136,20 +130,13 @@ if (isset($_SESSION['user'])) {
                     unset($_SESSION['message']);
                 ?>
             </form>
-              
             </ul>
           </div>
-
           <div class="col-md-6 mb-5 mb-md-0">
             <p><img src="assets/img/person_2.jpg" alt="Image" class="img-fluid"></p>
-
-           
           </div>
-
         </div>
-
       </div>
-
     </section>
 
   </main><!-- End #main -->
@@ -167,7 +154,5 @@ if (isset($_SESSION['user'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>

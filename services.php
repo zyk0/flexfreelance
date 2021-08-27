@@ -1,5 +1,6 @@
 <?php
 // простое кеширование для статической страницы
+
   $cache_dir = realpath(__DIR__).'/cache'; // директория для cache
   $cache_name = md5(basename(__FILE__)).'.html'; // имя для cache-файла
   $lifetime = 3600; //время жизни cache - один час
@@ -13,6 +14,7 @@
   }
  
   ob_start(); // кэш-файла нет. буфер для cache'ирования
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,19 +172,6 @@
 					<span class="la la-3x mb-4">
 						<?php echo "<img src=". $avatar_author ." "."width='60' height='80'>" ?>
 					</span>  
-					
-					<?php 
-					//php $avatar_default = get_avatar_author_by_id($onesingle[0]);
-					
-					//$count_letters_img = 18 > iconv_strlen($avatar_author); 
-					/*
-					if(iconv_strlen($avatar_author) < 18 ){ 
-						echo "<img src=". $avatar_default ." "."width='60' height='80'>";
-					}else{
-						echo "<img src=". $avatar_author ." "."width='60' height='80'>";
-					}
-					*/
-					?>
 
 					<p>onesingle["text"].  публикация:</p>
                     <ul class="list-unstyled list-line">
@@ -212,13 +201,49 @@
 				<li>Cumque quae aliquam</li>
               </ul>
             </div>
-            
+
           </div>
-        </div>
+        </div>	
       </div>
     </section>
-
   </main><!-- End #main -->
+
+<?php
+$dbhost = "127.0.0.1";
+$dbname = "flexfreelance";
+$username = "root";
+$password = "";
+try{
+	$db = new PDO("mysql:host=$dbhost; dbname=$dbname; charset=utf8;", $username, $password);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	//исключения	
+}catch (PDOException $e){
+	echo "Ошибка соединения: ", $e->getMessage();
+	exit;
+}
+
+if ($_GET['page']) {
+  $page = $_GET['page'];
+  echo "if: ".$page;
+} else {
+  $page = 1;
+  echo "else: ".$page."<br>";
+}
+
+$limit = 4;
+$number = ($limit * $page) - $limit;
+$num_rows = $db->query('select count(*) from `singles` ')->fetchColumn(); 
+$str_page = ceil($num_rows/$limit);
+$sql = "SELECT * from `singles` LIMIT $number, $limit";
+
+//foreach ($db->query($sql, PDO::FETCH_NUM) as $row) { echo $row; };
+
+for ($i=1; $i <= $str_page ; $i++) { 
+  echo "<a href='?page=$i'> $i </a>";
+}
+
+?>
+  
   <?php require_once "footer.php"; ?>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -233,6 +258,8 @@
 </body>
 </html>
 <?php
+
   file_put_contents($cache_dir.'/'.$cache_name, ob_get_contents()); //запись cache-файл
   ob_end_flush(); // закрыть буфер
+
 ?>
